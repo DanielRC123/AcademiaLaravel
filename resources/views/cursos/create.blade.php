@@ -6,7 +6,7 @@
 @section('contenido')
         <br>
         <h3 class="text-center">Creación de nuevo curso</h3>
-        <form action="/cursos" method = "POST">
+        <form action="/cursos" method = "POST" enctype="multipart/form-data">
 
             @csrf {{-- csrf : Es una protección contra ataques malintencionados--}}
 
@@ -18,11 +18,16 @@
                 <label for="descrip">Ingrese una descripción del curso</label>
                 <input id="descrip" class="form-control" type="text" name="descripcion">
             </div>
+            <div class="form-group">
+                <label for="imagen">Cargue una imagen para el curso</label>
+                <br>
+                <input id="imagen"  type="file" name="imagen">
+            </div>
             <button class="btn btn-dark" type="submit">Crear</button>
         </form>
 @endsection
-
-{{-- Esto era antes de heredar la plantilla
+{{--
+Esto era antes de heredar la plantilla
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,4 +58,4 @@
 </body>
 </html>
 
---}}
+ --}}
