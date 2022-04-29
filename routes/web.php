@@ -11,6 +11,7 @@ use App\Http\Controllers\ControladorPrecios;
 
 use App\Http\Controllers\CursoController;
 
+use App\Http\Controllers\InfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +53,9 @@ Route::get('iva/nombre/{nombre}/valor/{valor}', [ControladorPrecios::class,'getI
 
 
 // Nuevo
+Route::get('cursos/contacto',[InfoController::class,'info'],'contacto');
+
 
 Route::resource('cursos',CursoController::class);
+
+Route::get('nosotros',[InfoController::class,'info']);
