@@ -5,11 +5,13 @@
 
 @section('contenido')
         <br>
-        <h3 class="text-center">Modificación de curso</h3>
+        <h3 class="text-center">Modificación de docente</h3>
+        {{-- Aca llamamos al id de la tabla docentes. El id dependera del docente seleccionado con el boton ver mas --}}
         <form action="/docentes/{{$docente->id}}" method = "POST" enctype="multipart/form-data">
             @csrf {{-- csrf : Es una protección contra ataques malintencionados--}}
             @method('PUT')
-
+        {{-- En este apartado llamamos todos los campos que queremos mostrarle al usuario --}}
+        {{-- Nuevamente los atributos name deben ser acorde a un campo de la tabla docentes  --}}
             <div class="form-group">
                 <label for="nombre">Ingrese el nuevo nombre del docente</label>
                 <input id="nombre" class="form-control" type="text" name="nombre" value="{{$docente->nombre}}">
@@ -19,7 +21,7 @@
                 <input id="titulo" class="form-control" type="text" name="titulo" value="{{$docente->titulo}}">
             </div>
             <div class="form-group">
-                <label for="edad">Modifique el titulo de los docentes</label>
+                <label for="edad">Edad</label>
                 <input id="edad" class="form-control" type="text" name="edad" value="{{$docente->edad}}">
             </div>
             <div class="form-group">

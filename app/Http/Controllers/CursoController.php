@@ -58,8 +58,11 @@ class CursoController extends Controller
             $cursito->imagen = $request->file('imagen')->store('public/cursos');
         }
         $cursito->save();
-        return 'Curso creado exitosamente';
+        $tabla = "Curso";
+        $estado = "creado";
+// Enviemos las dos nuevas variables creadas anteriormente, dichas variables serán usadas en el archivo esta.blade.php
 
+        return view('estado',compact('tabla','cursito','estado'));
     }
 
     /**
@@ -115,7 +118,11 @@ class CursoController extends Controller
         }
         // return $request;
         $cursito->save();
-        return 'Curso actualizado en la base de datos';
+        $tabla = "Curso";
+        $estado = "actualizado";
+// Enviemos las dos nuevas variables creadas anteriormente, dichas variables serán usadas en el archivo esta.blade.php
+
+        return view('estado',compact('tabla','cursito','estado'));
     }
 
     /**

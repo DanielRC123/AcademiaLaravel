@@ -60,7 +60,11 @@ class DocenteController extends Controller
             $docente->fotoPerfil = $request->file('fotoPerfil')->store('public/docentes');
         }
         $docente->save();
-        return 'Docente creado exitosamente';
+        $tabla = 'Docente';
+        $estado = 'creado';
+// Enviemos las dos nuevas variables creadas anteriormente, dichas variables serán usadas en el archivo esta.blade.php
+        return view('estado',compact('tabla','docente','estado'));
+
 
     }
 
@@ -115,8 +119,10 @@ class DocenteController extends Controller
         }
         // return $request;
         $docente->save();
-        return 'Datos Del docente actualizados correctamente';
-    }
+        $tabla = "Docente";
+        $estado = "actualizado";
+// Enviemos las dos nuevas variables creadas anteriormente, dichas variables serán usadas en el archivo esta.blade.php
+        return view('estado',compact('tabla','docente','estado'));    }
 
     /**
      * Remove the specified resource from storage.
