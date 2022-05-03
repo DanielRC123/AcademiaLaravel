@@ -133,7 +133,16 @@ class CursoController extends Controller
      */
     public function destroy($id)
     {
+        $cursito = Curso::find($id);
+        $urlImagenBD = $cursito->imagen;
 
+        $nombreImagen = str_replace('public/','\storage\\',$urlImagenBD);
+        $rutaCompleta = public_path().$nombreImagen;
+        // return $rutaCompleta;
+        // // return $cursito;
+        unlink($rutaCompleta);
+        $cursito->delete();
+        return 'eliminado';
     }
 
     public function contacto()
