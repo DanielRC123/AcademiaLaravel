@@ -11,7 +11,16 @@
         <form action="/docentes" method = "POST" enctype="multipart/form-data">
 
             @csrf {{-- csrf : Es una protección contra ataques malintencionados--}}
-
+            @if ($errors->any())
+                @foreach ($errors->all() as $alerta)
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            <li>{{$alerta}}</li>
+                        </ul>
+                    </div>
+                @endforeach
+                
+            @endif
 
         {{--  Aca ambiamos el name="" de todos los campos que posea la tabla docente.   --}}
 

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Docente;
 
+use App\Http\Requests\DocentesRequest;
+
 class DocenteController extends Controller
 {
     /**
@@ -35,7 +37,7 @@ class DocenteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DocentesRequest $request)
     {
         // all: me trae toda la informacion almacenada en request
         //return $request->all();
@@ -132,7 +134,16 @@ class DocenteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $docente = Docente::find($id);
+        $urlImagenBD = $docente->fotoPerfil;
+        $nombreImagen = str_replace('public/','\storage\\',$urlImagenBD);
+        $rutaCompleta = public_path().$nombreImagen;
+        // return $rutaCompleta;
+        // // return $docente;
+        unlink($rutaCompleta);
+        $docente->delete();
+
+        return 'eliminado';
     }
 
 
